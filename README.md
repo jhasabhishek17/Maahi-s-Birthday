@@ -1,16 +1,5 @@
 # 🎂 Maahi's Birthday World 🌹
 
-A special, interactive birthday celebration website created for **Akshra (Maahi / Akshuu)**.
-
-## ✨ Features
-- 🌹 5 Types of Animated Falling Flowers (Roses, Tulips, Sunflowers, Cherry Blossoms, Daisies)
-- 🪩 Interactive Party Scene with Disco Lights, 6 Dancers, Guitarist & Champagne Foam Spray
-- 🎂 Chocolate Birthday Cake with Candle Blowing & Cake Cutting Animation (with Clapping & Music)
-- 🎈 Interactive Balloons with Real Cracker Sound Effects
-- 🎵 Continuous Bollywood Birthday Music & Party Tunes
-- 🌹 Bestfriend Bouquet Presentation Scene (Abhishek & Akshuu)
-- 😂 Wholesome Hindi Jokes & Compliment Generator
-
 ## 🚀 How to Run Locally
 
 ### 1. Run Frontend:
@@ -29,3 +18,4 @@ npm run build
 
 ## 🌐 One-Click Deployment (Vercel / Netlify)
 This repository includes a `vercel.json` configuration file at the root. You can directly connect this GitHub repository to Vercel for automatic deployment!
+

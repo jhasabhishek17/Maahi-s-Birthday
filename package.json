@@ -1,0 +1,10 @@
+{
+  "name": "maahi-birthday-world-root",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "npm --prefix maahi-birthday-world/frontend run dev",
+    "build": "npm --prefix maahi-birthday-world/frontend run build",
+    "start": "npm --prefix maahi-birthday-world/frontend run preview"
+  }
+}

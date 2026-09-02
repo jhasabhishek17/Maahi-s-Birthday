@@ -1,0 +1,5 @@
+{
+  "buildCommand": "cd maahi-birthday-world/frontend && npm install && npm run build",
+  "outputDirectory": "maahi-birthday-world/frontend/dist",
+  "framework": "vite"
+}

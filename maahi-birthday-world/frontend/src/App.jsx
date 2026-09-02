@@ -4,6 +4,15 @@ import TeddySVG from './components/teddy/TeddySVG'
 import { jokes } from './data/jokes'
 import { compliments } from './data/compliments'
 
+// Requested sections
+import AITeddyChat from './pages/AITeddyChat'
+import ComplimentGenerator from './pages/ComplimentGenerator'
+import WishGenerator from './pages/WishGenerator'
+import TeddyReport from './pages/TeddyReport'
+import OpenWhen from './pages/OpenWhen'
+import LastBox from './pages/LastBox'
+import Footer from './pages/Footer'
+
 /* ═══════════════════════════════════════════════════════
    🎵 BOLLYWOOD BIRTHDAY MUSIC — Lightweight & Bulletproof Loop
 ═══════════════════════════════════════════════════════ */
@@ -13,7 +22,6 @@ function useBollywoodMusic() {
   const timerRef  = useRef(null)
   const [playing, setPlaying] = useState(false)
 
-  // Melody notes: [frequency Hz, duration seconds]
   const MELODY = [
     [392,0.34],[392,0.17],[440,0.45],[392,0.45],[392,0.45],[370,0.45],[330,0.9],
     [392,0.34],[392,0.17],[440,0.45],[392,0.45],[392,0.45],[523,0.45],[494,0.9],
@@ -37,7 +45,6 @@ function useBollywoodMusic() {
 
       let currentTime = ctx.currentTime + 0.05
       MELODY.forEach(([freq, dur]) => {
-        // Main melody oscillator
         const osc = ctx.createOscillator()
         const gain = ctx.createGain()
         osc.type = 'sine'
@@ -54,7 +61,6 @@ function useBollywoodMusic() {
         osc.start(currentTime)
         osc.stop(currentTime + dur + 0.01)
 
-        // Warm sub-harmony
         const osc2 = ctx.createOscillator()
         const gain2 = ctx.createGain()
         osc2.type = 'triangle'
@@ -211,9 +217,6 @@ const playBirthdaySong = () => {
   } catch (e) {}
 }
 
-/* ═══════════════════════════════════════════════════════
-   🎊 CONFETTI BURST
-═══════════════════════════════════════════════════════ */
 const boom = async (opts = {}) => {
   try {
     const c = (await import('canvas-confetti')).default
@@ -225,7 +228,7 @@ const boom = async (opts = {}) => {
 }
 
 /* ═══════════════════════════════════════════════════════
-   🌸 MULTI-FLOWER FAST RAIN
+   🌸 MULTI-FLOWER RAIN & LIGHTS
 ═══════════════════════════════════════════════════════ */
 function RoseSVG({ size = 28 }) {
   return (
@@ -754,7 +757,7 @@ function ChocCake({ blown, cut, onBlow, onCut }) {
 }
 
 /* ═══════════════════════════════════════════════════════
-   🌹 BOUQUET SCENE — ViewBox (440 x 320)
+   🌹 BOUQUET SCENE
 ═══════════════════════════════════════════════════════ */
 function BouquetScene() {
   const [given, setGiven] = useState(false)
@@ -792,7 +795,7 @@ function BouquetScene() {
           <path d="M 180 215 Q 200 220 220 215" stroke="#c0384a" strokeWidth="4.5" fill="none" />
           {[[200, 148, 36], [182, 158, 28], [218, 158, 28], [170, 170, 26], [230, 170, 26], [192, 165, 24], [208, 165, 24], [200, 178, 22], [185, 180, 20], [215, 180, 20], [200, 142, 20]].map(([cx, cy, sz], i) => (
             <g key={i}>
-              {[0, 60, 120, 180, 240, 300].map((a, j) => { const r = a * Math.PI / 180, d = sz * 0.38; return <ellipse key={j} cx={cx + d * Math.cos(r)} cy={cy + d * Math.sin(r)} rx={sz * 0.28} ry={sz * 0.22} fill={i % 3 === 0 ? '#c0384a' : i % 3 === 1 ? '#e05060' : '#a02030'} opacity="0.85" transform={`rotate(${a} ${cx + d * Math.cos(r)} ${cy + d * Math.sin(r)})`} /> })}
+              {[0, 60, 120, 180, 240, 300].map((a, j) => { const r = a * Math.PI / 180, d = sz * 0.38; return <ellipse key={j} cx={cx + d * Math.cos(r)} cy={cy + d * Math.sin(r)} rx={sz * 0.28} ry={sz * 0.22} fill={i % 3 === 0 ? '#c0384a' : i % 3 === 1 ? '#e05060' : '#a02030'} opacity="0.85" transform={`rotate(${a} ${22 + d * Math.cos(r)} ${22 + d * Math.sin(r)})`} /> })}
               <circle cx={cx} cy={cy} r={sz * 0.25} fill={i % 2 === 0 ? '#c0384a' : '#e05060'} />
             </g>
           ))}
@@ -839,7 +842,7 @@ function BouquetScene() {
 const loadMsgs = ['🌸 Phoolon ki baarish ho rahi hai...', '🧸 Teddy taiyaar ho raha hai...', '🎂 Chocolate cake bake ho rahi hai...', '🎈 Balloons fula rahe hain...', '🪩 Disco ball set ho raha hai...', '🍾 Champagne chilled ho rahi hai...', '✨ Sab taiyaar! Akshuu ko bulao! 🥳']
 
 /* ═══════════════════════════════════════════════════════
-   APP ROOT
+   APP ROOT — Original Red Dark Party Theme + Requested Additions
 ═══════════════════════════════════════════════════════ */
 export default function App() {
   const [screen, setScreen] = useState('loading')
@@ -861,7 +864,7 @@ export default function App() {
 
   const handleBlow = () => { setBlown(true); boom({ particleCount: 150, spread: 80, origin: { y: 0.4 } }) }
   const handleCut = () => { setCut(true); playClap(8); playBirthdaySong(); boom({ particleCount: 220, spread: 110 }) }
-  
+
   const safeJokes = (jokes && jokes.length > 0) ? jokes : [{ setup: 'हँसते रहो!', punchline: 'Happy Birthday! 🌹' }]
   const safeCompliments = (compliments && compliments.length > 0) ? compliments : ['You are amazing!']
 
@@ -878,6 +881,14 @@ export default function App() {
 
   const CS = { background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(244,160,176,0.2)', borderRadius: 24, boxShadow: '0 4px 24px rgba(0,0,0,0.3)' }
   const ST = { fontFamily: "'Cormorant Garamond',serif", fontSize: 'clamp(1.7rem,5vw,2.7rem)', color: '#f4a0b0', textAlign: 'center', marginBottom: 8 }
+
+  const scrollToSection = (id) => {
+    const el = document.getElementById(id)
+    if (el) el.scrollIntoView({ behavior: 'smooth' })
+  }
+
+  const currentJoke = safeJokes[jokeIdx % safeJokes.length] || safeJokes[0]
+  const currentCompliment = safeCompliments[compIdx % safeCompliments.length] || safeCompliments[0]
 
   if (screen === 'loading') return (
     <div style={{ minHeight: '100vh', background: '#1a0508', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
@@ -922,14 +933,9 @@ export default function App() {
     </div>
   )
 
-  /* ── MAIN SCREEN ── */
-  const currentJoke = safeJokes[jokeIdx % safeJokes.length] || safeJokes[0]
-  const currentCompliment = safeCompliments[compIdx % safeCompliments.length] || safeCompliments[0]
-
   return (
     <div style={{ minHeight: '100vh', background: '#1a0508', position: 'relative' }}>
       <FloatingFlowers /><PaperConfetti /><ClubLights />
-
       <ChampagneFoamOverlay show={showFoam} />
 
       {/* Ticker */}
@@ -938,6 +944,36 @@ export default function App() {
           &nbsp;&nbsp;&nbsp;🎉 Happy Birthday Akshuu! 🌹 &nbsp;|&nbsp; 🎂 From Abhishek with love! 🧸 &nbsp;|&nbsp; 🎈 Pop pop pop! 🎊 &nbsp;|&nbsp; 🌹 Bestfriends forever! ✨ &nbsp;|&nbsp; 🎵 Bollywood birthday music baj rahi hai! 🎉 &nbsp;|&nbsp; 🕺 Dance floor pe aao! 💃 &nbsp;|&nbsp; 🍾 Champagne time! 🎶&nbsp;&nbsp;&nbsp;
         </span>
       </div>
+
+      {/* Quick Navigation Bar */}
+      <nav className="sticky top-0 z-40 bg-[#1a0508]/90 backdrop-blur-md border-b border-[#f4a0b0]/20 py-2 px-4 overflow-x-auto">
+        <div className="max-w-6xl mx-auto flex items-center justify-between gap-3 text-xs">
+          <div className="flex items-center gap-1.5 shrink-0 font-bold text-[#f4a0b0]">
+            <span>🧸</span>
+            <span>Maahi's Red Birthday World</span>
+          </div>
+          <div className="flex items-center gap-2 shrink-0">
+            {[
+              { id: 'party-section', label: '💃 Party Floor' },
+              { id: 'ai-teddy-chat', label: '💬 Teddy Chatbot' },
+              { id: 'compliments', label: '💫 Something To Hear' },
+              { id: 'wish-generator', label: '✨ Wish Wheel' },
+              { id: 'teddy-report', label: '📋 Teddy Certificate' },
+              { id: 'open-when', label: '📬 Open When' },
+              { id: 'cake-section', label: '🎂 Cake Cutting' },
+              { id: 'last-box', label: '🎁 One Last Thing' },
+            ].map(item => (
+              <button
+                key={item.id}
+                onClick={() => scrollToSection(item.id)}
+                className="px-3 py-1 rounded-full bg-[#3a0e16] hover:bg-[#c0384a]/40 text-[#f4a0b0] transition-colors whitespace-nowrap border border-rose-900/40"
+              >
+                {item.label}
+              </button>
+            ))}
+          </div>
+        </div>
+      </nav>
 
       {/* Music Toggle */}
       <div style={{ position: 'fixed', bottom: 20, right: 20, zIndex: 50, display: 'flex', flexDirection: 'column', gap: 8, alignItems: 'flex-end' }}>
@@ -973,8 +1009,8 @@ export default function App() {
         </div>
       </section>
 
-      {/* ── S2: PARTY SCENE ── */}
-      <section style={{ background: '#220810', padding: '48px 16px', borderBottom: '1px solid rgba(244,160,176,0.12)' }}>
+      {/* ── S2: PARTY SCENE & CHAMPAGNE ── */}
+      <section id="party-section" style={{ background: '#220810', padding: '48px 16px', borderBottom: '1px solid rgba(244,160,176,0.12)' }}>
         <motion.h2 initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} style={ST}>
           🕺 Party Chal Rahi Hai! 💃
         </motion.h2>
@@ -997,6 +1033,12 @@ export default function App() {
         </motion.div>
       </section>
 
+      {/* ── REQUESTED SECTION 1: CHATBOT ── */}
+      <AITeddyChat />
+
+      {/* ── REQUESTED SECTION 2: A LITTLE SOMETHING YOU SHOULD HEAR ── */}
+      <ComplimentGenerator />
+
       {/* ── S3: BALLOONS ── */}
       <section style={{ background: '#1a0508', padding: '48px 16px', borderBottom: '1px solid rgba(244,160,176,0.12)' }}>
         <motion.h2 initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} style={ST}>
@@ -1007,6 +1049,9 @@ export default function App() {
         </p>
         <BalloonSection onAllPopped={() => boom({ particleCount: 300 })} />
       </section>
+
+      {/* ── REQUESTED SECTION 3: SPIN WHEEL (YOUR BIRTHDAY WISH) ── */}
+      <WishGenerator />
 
       {/* ── S4: BOUQUET ── */}
       <section style={{ background: '#220810', padding: '48px 16px', borderBottom: '1px solid rgba(244,160,176,0.12)', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
@@ -1019,8 +1064,11 @@ export default function App() {
         <BouquetScene />
       </section>
 
+      {/* ── REQUESTED SECTION 4: THE TEDDY'S OFFICIAL REPORT ── */}
+      <TeddyReport />
+
       {/* ── S5: CHOCOLATE CAKE ── */}
-      <section style={{ background: '#1a0508', padding: '48px 16px', borderBottom: '1px solid rgba(244,160,176,0.12)', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+      <section id="cake-section" style={{ background: '#1a0508', padding: '48px 16px', borderBottom: '1px solid rgba(244,160,176,0.12)', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
         <motion.h2 initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} style={ST}>
           🎂 Akshuu Ki Chocolate Birthday Cake
         </motion.h2>
@@ -1040,6 +1088,9 @@ export default function App() {
           </motion.div>}
         </AnimatePresence>
       </section>
+
+      {/* ── REQUESTED SECTION 5: OPEN WHEN YOU NEED A SMILE ── */}
+      <OpenWhen />
 
       {/* ── S6: LETTER ── */}
       <section style={{ background: '#220810', padding: '48px 16px', display: 'flex', flexDirection: 'column', alignItems: 'center', borderBottom: '1px solid rgba(244,160,176,0.12)' }}>
@@ -1127,6 +1178,9 @@ export default function App() {
         </div>
       </section>
 
+      {/* ── REQUESTED SECTION 6: OKAY... ONE LAST THING. 🎁 ── */}
+      <LastBox />
+
       {/* ── S10: FINALE WITH CHAMPAGNE SPRAY ── */}
       <section style={{ background: '#220810', padding: '64px 16px', textAlign: 'center', position: 'relative', overflow: 'hidden' }}>
         <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 3, background: 'linear-gradient(90deg,transparent,#c0384a,#ffd700,#c0384a,transparent)' }} />
@@ -1159,6 +1213,9 @@ export default function App() {
         <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, height: 3, background: 'linear-gradient(90deg,transparent,#c0384a,#ffd700,#c0384a,transparent)' }} />
         <p style={{ marginTop: 40, fontSize: '0.75rem', color: 'rgba(244,160,176,0.35)', fontFamily: "'Poppins',sans-serif" }}>🔒 Koi data collect nahi kiya. Sirf pyaar hai yahan. 🌹</p>
       </section>
+
+      {/* FOOTER */}
+      <Footer />
     </div>
   )
 }

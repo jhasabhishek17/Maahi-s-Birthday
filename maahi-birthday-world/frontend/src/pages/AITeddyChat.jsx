@@ -94,8 +94,8 @@ export default function AITeddyChat() {
   return (
     <section
       id="ai-teddy-chat"
-      className="py-20 px-4"
-      style={{ background: 'linear-gradient(180deg, #faf0dc 0%, #fffef9 100%)' }}
+      className="py-20 px-4 border-b border-rose-900/30"
+      style={{ background: '#1a0508' }}
     >
       <div className="max-w-lg mx-auto">
 
@@ -107,12 +107,12 @@ export default function AITeddyChat() {
           className="text-center mb-8"
         >
           <h2
-            className="text-4xl text-[#4a2c0a] mb-2"
-            style={{ fontFamily: "'Playfair Display', serif" }}
+            className="text-4xl text-[#f4a0b0] mb-2"
+            style={{ fontFamily: "'Cormorant Garamond', serif" }}
           >
             Chat with the Teddy 🧸
           </h2>
-          <p style={{ fontFamily: "'Dancing Script', cursive", fontSize: '1.1rem', color: '#8b5e3c' }}>
+          <p style={{ fontFamily: "'Poppins', sans-serif", fontSize: '0.95rem', color: '#9a6070' }}>
             The teddy is surprisingly talkative today.
           </p>
         </motion.div>
@@ -124,24 +124,25 @@ export default function AITeddyChat() {
           viewport={{ once: true }}
           className="rounded-2xl overflow-hidden"
           style={{
-            border: '1.5px solid #ecd4a0',
-            boxShadow: '0 8px 40px rgba(139,94,60,0.12)',
+            background: 'rgba(255,255,255,0.04)',
+            border: '1.5px solid rgba(244,160,176,0.2)',
+            boxShadow: '0 8px 40px rgba(0,0,0,0.5)',
           }}
         >
           {/* Chat header */}
           <div
             className="flex items-center gap-3 p-4"
-            style={{ background: 'linear-gradient(90deg, #4a2c0a, #6b4226)', borderBottom: '1px solid #8b5e3c' }}
+            style={{ background: 'linear-gradient(90deg, #3a0e16, #c0384a)', borderBottom: '1px solid rgba(244,160,176,0.3)' }}
           >
             <TeddySVG size={40} animated={false} expression="happy" />
             <div>
-              <p className="text-sm font-semibold text-[#faf0dc]"
-                style={{ fontFamily: "'Playfair Display', serif" }}>
+              <p className="text-sm font-semibold text-[#ffd700]"
+                style={{ fontFamily: "'Poppins', sans-serif" }}>
                 The Birthday Teddy
               </p>
               <div className="flex items-center gap-1.5">
                 <div className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
-                <span className="text-xs text-[#c4956a]" style={{ fontFamily: "'Inter', sans-serif" }}>
+                <span className="text-xs text-[#f4a0b0]" style={{ fontFamily: "'Poppins', sans-serif" }}>
                   Online & ready to chat
                 </span>
               </div>
@@ -151,7 +152,7 @@ export default function AITeddyChat() {
           {/* Messages */}
           <div
             className="p-4 space-y-3 overflow-y-auto"
-            style={{ background: '#fdf8f0', minHeight: 280, maxHeight: 340 }}
+            style={{ background: '#220810', minHeight: 280, maxHeight: 340 }}
           >
             {messages.map((msg, i) => (
               <motion.div
@@ -166,11 +167,11 @@ export default function AITeddyChat() {
                 <div
                   className="max-w-[78%] px-4 py-2.5 rounded-2xl text-sm leading-relaxed"
                   style={{
-                    background: msg.from === 'user' ? '#8b5e3c' : '#fffef9',
-                    color: msg.from === 'user' ? '#fffef9' : '#4a2c0a',
-                    border: msg.from === 'teddy' ? '1px solid #f5e4c0' : 'none',
-                    fontFamily: msg.from === 'teddy' ? "'Dancing Script', cursive" : "'Inter', sans-serif",
-                    fontSize: msg.from === 'teddy' ? '1rem' : '0.875rem',
+                    background: msg.from === 'user' ? '#c0384a' : 'rgba(255,255,255,0.08)',
+                    color: msg.from === 'user' ? '#fff' : '#fdf6ec',
+                    border: msg.from === 'teddy' ? '1px solid rgba(244,160,176,0.2)' : 'none',
+                    fontFamily: "'Poppins', sans-serif",
+                    fontSize: '0.9rem',
                     borderRadius: msg.from === 'user'
                       ? '1.25rem 1.25rem 0.25rem 1.25rem'
                       : '0.25rem 1.25rem 1.25rem 1.25rem',
@@ -193,7 +194,7 @@ export default function AITeddyChat() {
                   <span className="text-xl">🧸</span>
                   <div
                     className="px-4 py-3 rounded-2xl"
-                    style={{ background: '#fffef9', border: '1px solid #f5e4c0', borderRadius: '0.25rem 1.25rem 1.25rem 1.25rem' }}
+                    style={{ background: 'rgba(255,255,255,0.08)', border: '1px solid rgba(244,160,176,0.2)', borderRadius: '0.25rem 1.25rem 1.25rem 1.25rem' }}
                   >
                     <div className="flex gap-1">
                       {[0, 0.2, 0.4].map((d, i) => (
@@ -201,7 +202,7 @@ export default function AITeddyChat() {
                           key={i}
                           animate={{ y: [0, -4, 0] }}
                           transition={{ duration: 0.6, delay: d, repeat: Infinity }}
-                          className="w-2 h-2 rounded-full bg-[#c4956a]"
+                          className="w-2 h-2 rounded-full bg-[#f4a0b0]"
                         />
                       ))}
                     </div>
@@ -215,14 +216,14 @@ export default function AITeddyChat() {
           {/* Quick replies */}
           <div
             className="px-4 pt-3 pb-2 flex flex-wrap gap-2"
-            style={{ background: '#fdf8f0', borderTop: '1px solid #f5e4c0' }}
+            style={{ background: '#1a0508', borderTop: '1px solid rgba(244,160,176,0.2)' }}
           >
             {quickReplies.map(q => (
               <button
                 key={q}
                 onClick={() => { setInput(q); setTimeout(() => document.getElementById('teddy-chat-input')?.focus(), 50) }}
-                className="px-3 py-1.5 rounded-full text-xs border border-[#ecd4a0] bg-[#faf0dc] text-[#4a2c0a] hover:bg-[#f5e4c0] transition-colors"
-                style={{ fontFamily: "'Inter', sans-serif" }}
+                className="px-3 py-1.5 rounded-full text-xs border border-[#c0384a]/50 bg-[#3a0e16] text-[#f4a0b0] hover:bg-[#c0384a]/30 transition-colors"
+                style={{ fontFamily: "'Poppins', sans-serif" }}
               >
                 {q}
               </button>
@@ -233,19 +234,19 @@ export default function AITeddyChat() {
           <form
             onSubmit={sendMessage}
             className="flex gap-2 p-4"
-            style={{ background: '#fffef9', borderTop: '1px solid #f5e4c0' }}
+            style={{ background: '#220810', borderTop: '1px solid rgba(244,160,176,0.2)' }}
           >
             <input
               id="teddy-chat-input"
               value={input}
               onChange={e => setInput(e.target.value)}
               placeholder="Say something to the teddy..."
-              className="flex-1 rounded-full px-4 py-2.5 text-sm focus:outline-none"
+              className="flex-1 rounded-full px-4 py-2.5 text-sm focus:outline-none placeholder-[#9a6070]"
               style={{
-                background: '#faf0dc',
-                border: '1px solid #ecd4a0',
-                color: '#4a2c0a',
-                fontFamily: "'Inter', sans-serif",
+                background: '#1a0508',
+                border: '1px solid rgba(244,160,176,0.3)',
+                color: '#fdf6ec',
+                fontFamily: "'Poppins', sans-serif",
               }}
               disabled={isTyping}
             />
@@ -253,18 +254,18 @@ export default function AITeddyChat() {
               type="submit"
               disabled={isTyping || !input.trim()}
               className="w-10 h-10 rounded-full flex items-center justify-center shrink-0 transition-all disabled:opacity-40"
-              style={{ background: '#8b5e3c' }}
+              style={{ background: 'linear-gradient(135deg,#c0384a,#a02a3a)' }}
             >
               <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                <path d="M2 8 L14 2 L10 8 L14 14 Z" fill="#fffef9" />
+                <path d="M2 8 L14 2 L10 8 L14 14 Z" fill="#ffffff" />
               </svg>
             </button>
           </form>
         </motion.div>
 
         <p
-          className="text-center text-xs text-[#c4956a] mt-4"
-          style={{ fontFamily: "'Inter', sans-serif" }}
+          className="text-center text-xs text-[#9a6070] mt-4"
+          style={{ fontFamily: "'Poppins', sans-serif" }}
         >
           🔒 Everything stays here. Nothing is sent or stored anywhere.
         </p>

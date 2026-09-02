@@ -37,21 +37,7 @@ npm run build
 
 ## Kya kya hai isme? ✨
 
-| Section | Kya milega |
-|---------|-----------|
-| 🎬 Loading Screen | Teddy ka swagat |
-| 💌 Birthday Letter | Dil se likha hua khat |
-| 🧸 Teddy Room | Interactive kamra — sab kuch click karo |
-| ✨ Traits | Maahi ki khoobiyan |
-| 🌷 Bouquet Shop | Phool chunne ka mauka |
-| 😂 Joke Factory | 32 bakwaas jokes |
-| 🎮 Mini Game | Phool pakadne ka game |
-| 🎤 Concert | Maahi ka imaginary concert |
-| 🎸 Guitar Song | Birthday song + guitar animation |
-| 🧸 AI Teddy Chat | Teddy se baatein karo |
-| 🎁 Last Box | Confetti finale |
 
----
 
 ## Customize karna ho toh...
 

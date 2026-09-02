@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import Button from '../components/ui/Button'
-import { bouquets, shoppingPlatforms } from '../data/giftOptions'
+import { bouquets } from '../data/giftOptions'
 
 // Toast component
 function Toast({ message, show }) {
@@ -121,7 +121,7 @@ export default function BouquetShop() {
           ))}
         </div>
 
-        {/* Shopping links (shown when selected) */}
+        {/* Selection Confirmation (in-page, no external links) */}
         <AnimatePresence>
           {selectedBouquet && (
             <motion.div
@@ -135,38 +135,19 @@ export default function BouquetShop() {
                 className="text-xl font-semibold text-[#4a2c0a] mb-2"
                 style={{ fontFamily: "'Playfair Display', serif" }}
               >
-                Want the real version? 🌷
+                Selected with Love 🌷
               </p>
               <p
-                className="text-sm text-[#8b5e3c] mb-6"
+                className="text-sm text-[#8b5e3c] mb-2"
                 style={{ fontFamily: "'Inter', sans-serif" }}
               >
-                You chose: <strong>{selectedBouquet.name}</strong>
+                You chose: <strong>{selectedBouquet.name}</strong> {selectedBouquet.emoji}
               </p>
-
-              <div className="flex flex-wrap justify-center gap-3 mb-6">
-                {shoppingPlatforms.map(p => (
-                  <a
-                    key={p.name}
-                    href={p.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full font-medium text-sm
-                      bg-[#faf0dc] text-[#4a2c0a] border border-[#ecd4a0]
-                      hover:bg-[#f5e4c0] hover:border-[#c4956a] transition-all"
-                    style={{ fontFamily: "'Inter', sans-serif" }}
-                  >
-                    <span>{p.emoji}</span> {p.name}
-                  </a>
-                ))}
-              </div>
-
-              {/* Privacy note */}
               <p
-                className="text-xs text-[#c4956a] flex items-center justify-center gap-1"
-                style={{ fontFamily: "'Inter', sans-serif" }}
+                className="text-xs text-[#c4956a]"
+                style={{ fontFamily: "'Dancing Script', cursive", fontSize: '1.05rem' }}
               >
-                🔒 This only shows you where to buy flowers. Nothing is tracked or collected here.
+                This bouquet is reserved specially for Maahi in your birthday world! 🧸✨
               </p>
             </motion.div>
           )}

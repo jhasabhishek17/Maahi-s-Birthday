@@ -19,8 +19,8 @@ export default function ComplimentGenerator() {
   return (
     <section
       id="compliments"
-      className="py-20 px-4"
-      style={{ background: 'linear-gradient(180deg, #faf0dc 0%, #fffef9 100%)' }}
+      className="py-20 px-4 border-b border-rose-900/30"
+      style={{ background: '#220810' }}
     >
       <div className="max-w-xl mx-auto text-center">
 
@@ -32,8 +32,8 @@ export default function ComplimentGenerator() {
           className="mb-10"
         >
           <h2
-            className="text-4xl md:text-5xl text-[#4a2c0a] mb-2"
-            style={{ fontFamily: "'Playfair Display', serif" }}
+            className="text-4xl md:text-5xl text-[#f4a0b0] mb-2"
+            style={{ fontFamily: "'Cormorant Garamond', serif" }}
           >
             A Little Something You Should Hear 💫
           </h2>
@@ -43,9 +43,9 @@ export default function ComplimentGenerator() {
         <div
           className="rounded-3xl p-10 mb-8 relative overflow-hidden"
           style={{
-            background: 'linear-gradient(135deg, #fffef9 0%, #faf0dc 100%)',
-            border: '2px solid #ecd4a0',
-            boxShadow: '0 8px 40px rgba(139,94,60,0.12)',
+            background: 'rgba(255,255,255,0.04)',
+            border: '1px solid rgba(244,160,176,0.2)',
+            boxShadow: '0 8px 40px rgba(0,0,0,0.4)',
             minHeight: 160,
           }}
         >
@@ -59,27 +59,27 @@ export default function ComplimentGenerator() {
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95, y: -10 }}
               transition={{ duration: 0.4 }}
-              className="text-xl leading-8 text-[#4a2c0a] italic"
-              style={{ fontFamily: "'Playfair Display', serif" }}
+              className="text-xl leading-8 text-[#fdf6ec] italic"
+              style={{ fontFamily: "'Cormorant Garamond', serif" }}
             >
               "{compliments[index]}"
             </motion.p>
           </AnimatePresence>
         </div>
 
-        <Button onClick={next} variant="secondary" size="md">
+        <button onClick={next} className="btn-gold">
           Another one 🌷
-        </Button>
+        </button>
 
         <motion.p
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ delay: 0.5 }}
-          className="mt-4 text-xs text-[#c4956a]"
-          style={{ fontFamily: "'Dancing Script', cursive", fontSize: '0.95rem' }}
+          className="mt-4 text-sm text-[#9a6070]"
+          style={{ fontFamily: "'Poppins', sans-serif" }}
         >
-          These are all true, by the way.
+          These are all true, by the way. 🌹
         </motion.p>
       </div>
     </section>

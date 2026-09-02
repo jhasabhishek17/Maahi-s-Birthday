@@ -26,8 +26,8 @@ export default function WishGenerator() {
   return (
     <section
       id="wish-generator"
-      className="py-20 px-4"
-      style={{ background: '#fffef9' }}
+      className="py-20 px-4 border-b border-rose-900/30"
+      style={{ background: '#1a0508' }}
     >
       <div className="max-w-xl mx-auto text-center">
 
@@ -39,12 +39,12 @@ export default function WishGenerator() {
           className="mb-10"
         >
           <h2
-            className="text-4xl md:text-5xl text-[#4a2c0a] mb-2"
-            style={{ fontFamily: "'Playfair Display', serif" }}
+            className="text-4xl md:text-5xl text-[#f4a0b0] mb-2"
+            style={{ fontFamily: "'Cormorant Garamond', serif" }}
           >
             Your Birthday Wish ✨
           </h2>
-          <p className="text-[#8b5e3c] text-sm" style={{ fontFamily: "'Inter', sans-serif" }}>
+          <p className="text-[#9a6070] text-sm" style={{ fontFamily: "'Poppins', sans-serif" }}>
             Spin the wheel to reveal your birthday wish for this year.
           </p>
         </motion.div>
@@ -53,7 +53,7 @@ export default function WishGenerator() {
         <div className="relative flex justify-center mb-8">
           {/* Pointer */}
           <div
-            className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-3 z-10"
+            className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-3 z-10 text-[#ffd700]"
             style={{ fontSize: 24 }}
           >
             ▼
@@ -79,16 +79,16 @@ export default function WishGenerator() {
                 const x2 = 120 + 115 * Math.cos(endAngle)
                 const y2 = 120 + 115 * Math.sin(endAngle)
                 const colors = [
-                  '#f5e4c0', '#faf0dc', '#f0cdd0', '#d4e8c8',
-                  '#ecd4a0', '#fdf8f0', '#e8b4b8', '#f5e4c0',
+                  '#c0384a', '#9b59b6', '#e05060', '#ffd700',
+                  '#a02030', '#3498db', '#f4a0b0', '#8a1a28',
                 ]
                 return (
                   <g key={i}>
                     <path
                       d={`M 120 120 L ${x1} ${y1} A 115 115 0 0 1 ${x2} ${y2} Z`}
                       fill={colors[i % colors.length]}
-                      stroke="#c4956a"
-                      strokeWidth="1"
+                      stroke="rgba(255,215,0,0.5)"
+                      strokeWidth="1.5"
                     />
                     <text
                       x={x} y={y}
@@ -102,18 +102,18 @@ export default function WishGenerator() {
                 )
               })}
               {/* Center circle */}
-              <circle cx="120" cy="120" r="22" fill="#8b5e3c" />
-              <circle cx="120" cy="120" r="18" fill="#c4956a" />
-              <text x="120" y="125" textAnchor="middle" fontSize="16" fill="#fffef9">✨</text>
+              <circle cx="120" cy="120" r="22" fill="#1a0508" />
+              <circle cx="120" cy="120" r="18" fill="#c0384a" />
+              <text x="120" y="125" textAnchor="middle" fontSize="16" fill="#ffd700">✨</text>
             </svg>
           </motion.div>
         </div>
 
         {/* Spin button */}
         <div className="mb-8">
-          <Button onClick={spin} variant="primary" size="lg" disabled={spinning}>
+          <button onClick={spin} className="btn-gold" disabled={spinning}>
             {spinning ? 'Spinning... ✨' : 'Spin my wish ✨'}
-          </Button>
+          </button>
         </div>
 
         {/* Wish result */}
@@ -126,21 +126,21 @@ export default function WishGenerator() {
               transition={{ type: 'spring', stiffness: 200, damping: 15 }}
               className="rounded-2xl p-8"
               style={{
-                background: 'linear-gradient(135deg, #faf0dc 0%, #fdf8f0 100%)',
-                border: '2px solid #ecd4a0',
-                boxShadow: '0 8px 32px rgba(139,94,60,0.12)',
+                background: 'rgba(255,255,255,0.05)',
+                border: '1px solid rgba(244,160,176,0.3)',
+                boxShadow: '0 8px 32px rgba(0,0,0,0.4)',
               }}
             >
               <div className="text-3xl mb-3">{wish.emoji}</div>
               <p
-                className="text-xs uppercase tracking-widest text-[#c4956a] mb-4"
-                style={{ fontFamily: "'Inter', sans-serif" }}
+                className="text-xs uppercase tracking-widest text-[#ffd700] mb-4"
+                style={{ fontFamily: "'Poppins', sans-serif" }}
               >
                 {wish.category}
               </p>
               <p
-                className="text-lg text-[#4a2c0a] italic leading-8"
-                style={{ fontFamily: "'Playfair Display', serif" }}
+                className="text-lg text-[#fdf6ec] italic leading-8"
+                style={{ fontFamily: "'Cormorant Garamond', serif" }}
               >
                 {wish.wish}
               </p>

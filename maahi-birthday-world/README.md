@@ -52,13 +52,5 @@ npm run build
 ## 🌷 From the heart
 
 > जन्मदिन मुबारक हो, माही।
->
-> Tum chahti ho ya nahi, ye choti si website sirf ek kaam karti hai —
-> tumhare chehere par thodi si muskaan laana.
->
-> Koi pressure nahi. Koi expectation nahi.
-> Bas phool, teddy, aur kuch bakwaas jokes. 🧸
-
----
 
 *Made with friendship, flowers, questionable jokes & one extremely serious teddy. 🌷*
